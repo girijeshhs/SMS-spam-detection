@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Spam Detector</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+        .container { max-width: 500px; margin: 60px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h2 { text-align: center; }
+        textarea { width: 100%; height: 120px; margin-bottom: 20px; padding: 10px; font-size: 16px; border-radius: 4px; border: 1px solid #ccc; }
+        button { width: 100%; padding: 12px; background: #007bff; color: #fff; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .result { margin-top: 20px; text-align: center; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Email Spam Detector</h2>
+        <textarea id="emailText" placeholder="Paste your email text here..."></textarea>
+        <button onclick="checkSpam()">Check Spam</button>
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+        async function checkSpam() {
+            const text = document.getElementById('emailText').value;
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = 'Checking...';
+            let urls = [
+                'http://127.0.0.1:5000/predict',
+                'http://localhost:5000/predict'
+            ];
+            let success = false;
+            for (let url of urls) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ text })
+                    });
+                    if (!response.ok) throw new Error('Bad response');
+                    const data = await response.json();
+                    if (data.spam === true) {
+                        resultDiv.textContent = 'This email is likely SPAM!';
+                        resultDiv.style.color = 'red';
+                    } else if (data.spam === false) {
+                        resultDiv.textContent = 'This email is NOT spam.';
+                        resultDiv.style.color = 'green';
+                    } else {
+                        resultDiv.textContent = 'Error: ' + (data.error || 'Unknown error');
+                        resultDiv.style.color = 'orange';
+                    }
+                    success = true;
+                    break;
+                } catch (err) {
+                    // Try next URL
+                }
+            }
+            if (!success) {
+                resultDiv.textContent = 'Error connecting to backend.';
+                resultDiv.style.color = 'orange';
+            }
+        }
+    </script>
+</body>
+</html>
