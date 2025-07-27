@@ -15,7 +15,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -33,7 +33,7 @@
 
         .particle {
             position: absolute;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 50%;
             animation: float 15s infinite linear;
         }
@@ -47,7 +47,7 @@
 
         /* Header */
         .header {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(20px);
             padding: 1rem 2rem;
             position: fixed;
@@ -55,7 +55,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .nav {
@@ -91,19 +91,19 @@
         }
 
         .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             transform: translateY(-2px);
         }
 
         /* Main Container */
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 8rem 2rem 2rem;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: 1fr 500px;
+            gap: 3rem;
+            align-items: start;
             min-height: 100vh;
         }
 
@@ -117,7 +117,7 @@
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #fff, #f093fb);
+            background: linear-gradient(135deg, #fff, #64ffda);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -138,12 +138,12 @@
         }
 
         .stat-item {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
             padding: 1.5rem;
             border-radius: 15px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: transform 0.3s ease;
         }
 
@@ -154,7 +154,7 @@
         .stat-number {
             font-size: 2rem;
             font-weight: 800;
-            color: #f093fb;
+            color: #64ffda;
             display: block;
         }
 
@@ -166,13 +166,15 @@
 
         /* Detector Panel */
         .detector-panel {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(20px);
             border-radius: 25px;
-            padding: 2.5rem;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            position: relative;
+            padding: 2rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative; /* Change from sticky to relative */
+            /* Remove top: 100px; */
+            z-index: 100;
             overflow: hidden;
         }
 
@@ -183,23 +185,26 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            background: linear-gradient(90deg, #64ffda, #1e3a8a, #3b82f6);
+            z-index: 1;
         }
 
         .panel-header {
             text-align: center;
             margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
         }
 
         .panel-title {
             font-size: 2rem;
             font-weight: 700;
-            color: #2d3748;
+            color: #ffffff;
             margin-bottom: 0.5rem;
         }
 
         .panel-subtitle {
-            color: #718096;
+            color: #a0aec0;
             font-size: 1rem;
         }
 
@@ -207,6 +212,7 @@
         .input-section {
             position: relative;
             margin-bottom: 2rem;
+            z-index: 2;
         }
 
         .textarea-container {
@@ -215,21 +221,26 @@
 
         .message-input {
             width: 100%;
-            min-height: 180px;
-            padding: 1.5rem;
-            border: 2px solid #e2e8f0;
+            min-height: 300px;
+            padding: 1.2rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             font-size: 1rem;
             font-family: inherit;
             resize: vertical;
             transition: all 0.3s ease;
-            background: white;
+            background: rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+        }
+
+        .message-input::placeholder {
+            color: #a0aec0;
         }
 
         .message-input:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #64ffda;
+            box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.1);
             transform: translateY(-2px);
         }
 
@@ -239,7 +250,7 @@
             right: 15px;
             font-size: 0.8rem;
             color: #a0aec0;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(0, 0, 0, 0.7);
             padding: 0.25rem 0.5rem;
             border-radius: 10px;
         }
@@ -250,10 +261,12 @@
             gap: 0.5rem;
             margin-bottom: 1.5rem;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
         }
 
         .example-tag {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 20px;
@@ -265,16 +278,16 @@
 
         .example-tag:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
         }
 
         /* Analyze Button */
         .analyze-btn {
             width: 100%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
             color: white;
             border: none;
-            padding: 1.25rem 2rem;
+            padding: 1rem 2rem;
             border-radius: 15px;
             font-size: 1.1rem;
             font-weight: 600;
@@ -282,12 +295,13 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            z-index: 2;
         }
 
         .analyze-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
         }
 
         .analyze-btn:disabled {
@@ -305,10 +319,12 @@
 
         /* Results Section */
         .results {
-            min-height: 150px;
+            min-height: 100px;
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.5s ease;
+            position: relative;
+            z-index: 2;
         }
 
         .results.show {
@@ -317,11 +333,12 @@
         }
 
         .result-card {
-            background: #f7fafc;
+            background: rgba(0, 0, 0, 0.4);
             border-radius: 15px;
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
-            border: 2px solid #e2e8f0;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
         }
 
         .result-icon {
@@ -341,29 +358,29 @@
         }
 
         .spam-result {
-            border-color: #fed7d7;
-            background: #fff5f5;
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
         }
 
         .spam-result .result-icon {
-            color: #e53e3e;
+            color: #ef4444;
         }
 
         .spam-result .result-text {
-            color: #c53030;
+            color: #ef4444;
         }
 
         .legitimate-result {
-            border-color: #c6f6d5;
-            background: #f0fff4;
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
         }
 
         .legitimate-result .result-icon {
-            color: #38a169;
+            color: #10b981;
         }
 
         .legitimate-result .result-text {
-            color: #2f855a;
+            color: #10b981;
         }
 
         /* Loading Animation */
@@ -402,9 +419,9 @@
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 2rem;
             text-align: center;
@@ -414,13 +431,13 @@
 
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .feature-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #f093fb, #fff);
+            background: linear-gradient(135deg, #64ffda, #fff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -443,7 +460,7 @@
             text-align: center;
             margin-top: 4rem;
             padding-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.8);
         }
 
@@ -490,13 +507,92 @@
 
         /* Pulse animation for buttons */
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(102, 126, 234, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
         }
 
         .pulse {
             animation: pulse 2s infinite;
+        }
+
+        /* Additional Content Cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .info-card h3 {
+            color: #64ffda;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .info-card p {
+            color: #a0aec0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .security-features {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            color: #10b981;
+            font-size: 0.85rem;
+        }
+
+        .api-info {
+            background: rgba(100, 255, 218, 0.1);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .api-info h4 {
+            color: #64ffda;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .api-info code {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            color: #64ffda;
+        }
+
+        /* Custom Scrollbar for Detector Panel */
+        .detector-panel::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .detector-panel::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .detector-panel::-webkit-scrollbar-thumb {
+            background: rgba(100, 255, 218, 0.3);
+            border-radius: 3px;
+        }
+
+        .detector-panel::-webkit-scrollbar-thumb:hover {
+            background: rgba(100, 255, 218, 0.5);
         }
     </style>
 </head>
@@ -539,6 +635,32 @@
                 <div class="stat-item">
                     <span class="stat-number" id="time">&lt; 1s</span>
                     <span class="stat-label">Analysis Time</span>
+                </div>
+            </div>
+
+            <!-- Additional Info Cards -->
+            <div class="info-cards">
+                <div class="info-card">
+                    <h3>🛡️ Real-time Protection</h3>
+                    <p>Our AI analyzes message patterns, sender behavior, and content structure to identify potential threats before they reach you.</p>
+                    <div class="security-features">
+                        <i class="fas fa-check"></i>
+                        <span>Zero data retention • End-to-end encryption • GDPR compliant</span>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3>🔬 Advanced Technology</h3>
+                    <p>Powered by machine learning models trained on millions of messages, featuring natural language processing and behavioral analysis.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3>⚡ Developer Integration</h3>
+                    <p>Easy-to-use REST API for seamless integration into your applications.</p>
+                    <div class="api-info">
+                        <h4>Quick API Example:</h4>
+                        <code>POST /predict {"text": "Your message here"}</code>
+                    </div>
                 </div>
             </div>
         </div>
